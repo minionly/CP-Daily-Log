@@ -64,7 +64,6 @@ function renderPosts(data) {
     container.style.cssText = `
         list-style-type: none; 
         padding: 0;
-        width: 65%;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -82,7 +81,6 @@ function renderPosts(data) {
                 display: flex;
                 justify-content: flex-start;
                 width: 100%;
-                margin-left: 50px;
             `;
         }
 
@@ -138,6 +136,3 @@ const postsContainer = document.querySelector('.posts-container');
 postsContainer.appendChild(renderPosts(data));
 console.log(data);
 
-
-// me may map thu lu
-// ok 
