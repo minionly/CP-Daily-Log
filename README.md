@@ -1,1 +1,1 @@
-# A DP a day keeps the doctor away
+# Daily Competitve Programming 
