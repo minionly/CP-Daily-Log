@@ -64,16 +64,28 @@ function renderPosts(data) {
     container.style.cssText = `
         list-style-type: none; 
         padding: 0;
-        width: 60%;
+        width: 65%;
         list-style: none;
         margin: 0;
         padding: 0;
         display: flex;
         flex-wrap: wrap;
-
     `;
 
-    approachingPosts.forEach(postData => {
+    let rowDiv; // Variable to hold the current row div
+
+    approachingPosts.forEach((postData, index) => {
+        // Create a new row div for every second post
+        if (index % 2 === 0) {
+            rowDiv = document.createElement('div');
+            rowDiv.style.cssText = `
+                display: flex;
+                justify-content: flex-start;
+                width: 100%;
+                margin-left: 50px;
+            `;
+        }
+
         const post = document.createElement('li');
         post.style.cssText = "margin: 15px; color: white;";
 
@@ -86,7 +98,7 @@ function renderPosts(data) {
         const anchor = document.createElement('a');
         anchor.href = postData.url;
         anchor.textContent = postData.title;
-        anchor.stylcssText = `
+        anchor.style.cssText = `
             color: white;
         `;
 
@@ -95,26 +107,31 @@ function renderPosts(data) {
         const meta = document.createElement('p');
         meta.className = "post-meta";
         meta.style.cssText = "font-style: italic; color: #666;";
-
         meta.textContent = postData.date;
 
         const excerptPara = document.createElement('p');
         excerptPara.className = "post-excerpt";
         excerptPara.style.cssText = "margin-top: 10px;";
-
-        const excerptTextNode = document.createTextNode(postData.urlTextContent);
-        excerptPara.appendChild(excerptTextNode);
+        excerptPara.textContent = postData.urlTextContent;
 
         article.appendChild(header);
         article.appendChild(meta);
         article.appendChild(excerptPara);
 
         post.appendChild(article);
-        container.appendChild(post);
+        
+        // Append the post to the current row div
+        rowDiv.appendChild(post);
+
+        // If it's the last post in the row or the last post overall, append the row div to the container
+        if ((index + 1) % 2 === 0 || index === approachingPosts.length - 1) {
+            container.appendChild(rowDiv);
+        }
     });
 
     return container;
 }
+
 
 const postsContainer = document.querySelector('.posts-container');
 
