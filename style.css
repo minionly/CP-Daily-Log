@@ -109,7 +109,7 @@ body {
     width: 60%;
     margin: 30px;
     margin-right: 0px;
-
+    margin-left: 45px;
 }
 
 #posts a {
@@ -122,6 +122,19 @@ body {
 }
 
 .site-header {
+    margin-top: 50px;
     width: 60%;
     padding-left: 30px;
+    margin-left: 15px;
+}
+
+.site-header a {
+    font-size: 2.7rem;
+    margin-bottom: 20px;
+}
+
+.site-description {
+    font-size: 1.8rem;
+    padding-bottom: 20px;
+    border-bottom: 3px dashed white;
 }
