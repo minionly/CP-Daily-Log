@@ -120,3 +120,6 @@ const postsContainer = document.querySelector('.posts-container');
 
 postsContainer.appendChild(renderPosts(data));
 console.log(data);
+
+
+// me may map thu lu

@@ -119,5 +119,9 @@ body {
 
 #posts a:hover {
     border-bottom: 2.5px dashed var(--wp--preset--color--cyan-bluish-gray);
+}
 
+.site-header {
+    width: 60%;
+    padding-left: 30px;
 }
