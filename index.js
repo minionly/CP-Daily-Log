@@ -1,4 +1,4 @@
-function setLocalStorage(data, address){
+export function setLocalStorage(data, address){
     localStorage.setItem(address, JSON.stringify(data));
 }
 
@@ -10,199 +10,14 @@ function getLocalStorage(address){
 const data = {
     approaching : [
         {
-            "title": "npm-free LiveReload(ish): Simple scripts for asset watching and auto-reload in the browser",
-            "date": "aaaaaaa",
-            "urlTextContent": "A suaaaaaaaaaa aaaaaaaaa aaaaaaaaaa aaaaaaset-watching script and 'LiveReload' functionality. All fitting with my values. Let's see what it looks like!",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 1
-        },
-        {
-            "title": "A manifesto for small, static, web apps",
-            "date": "Day 2",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 2
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "npm-free LiveReload(ish): Simple scripts for asset watching and auto-reload in the browser",
+            "title": "Bai dau tien cua bo m",
             "date": "Day 1",
-            "urlTextContent": "A super simple asset-watching script and 'LiveReload' functionality. All fitting with my values. Let's see what it looks like!",
+            "urlTextContent": "thieu nho lan dau code",
             "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 1
-        },
-        {
-            "title": "A manifesto for small, static, web apps",
-            "date": "Day 2",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 2
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "npm-free LiveReload(ish): Simple scripts for asset watching and auto-reload in the browser",
-            "date": "Day 1",
-            "urlTextContent": "A super simple asset-watching script and 'LiveReload' functionality. All fitting with my values. Let's see what it looks like!",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 1
-        },
-        {
-            "title": "A manifesto for small, static, web apps",
-            "date": "Day 2",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 2
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "A manifesto for small, static, web apps",
-            "date": "Day 2",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 2
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "npm-free LiveReload(ish): Simple scripts for asset watching and auto-reload in the browser",
-            "date": "Day 1",
-            "urlTextContent": "A super simple asset-watching script and 'LiveReload' functionality. All fitting with my values. Let's see what it looks like!",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 1
-        },
-        {
-            "title": "A manifesto for small, static, web apps",
-            "date": "Day 2",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 2
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "A manifesto for small, static, web apps",
-            "date": "aaaaaa",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 2
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "npm-free LiveReload(ish): Simple scripts for asset watching and auto-reload in the browser",
-            "date": "Day 1",
-            "urlTextContent": "A super simple asset-watching script and 'LiveReload' functionality. All fitting with my values. Let's see what it looks like!",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 1
-        },
-        {
-            "title": "A manifesto for small, static, web apps",
-            "date": "Day 2",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 2
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "A manifesto for small, static, web apps",
-            "date": "Day 2",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 2
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "npm-free LiveReload(ish): Simple scripts for asset watching and auto-reload in the browser",
-            "date": "Day 1",
-            "urlTextContent": "A super simple asset-watching script and 'LiveReload' functionality. All fitting with my values. Let's see what it looks like!",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 1
-        },
-        {
-            "title": "A manifesto for small, static, web apps",
-            "date": "Day 2",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 2
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
-        },
-        {
-            "title": "ex3",
-            "date": "Day 3",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84" //ex 3
         }
         
-    ]
+    ],
+
 }
 
 let currentPage = 1;
@@ -230,6 +45,19 @@ document.getElementById("lr").addEventListener("click", () => {
     updatePostsContainer();
 });
 
+var input = document.getElementById('pi');
+
+input.addEventListener('keydown', function (event) {
+    if (event.keyCode === 13) {  
+        if (input.value >= 1 && input.value <= totalItem) {
+            setLocalStorage(parseInt(input.value), "cp");
+            currentPage = parseInt(input.value);
+            updatePostsContainer();
+            event.preventDefault();
+        }
+    }
+});
+
 function renderPosts(data, page) {
     const approachingPosts = data.approaching;
     const container = document.createElement('ul');
@@ -243,14 +71,12 @@ function renderPosts(data, page) {
         flex-wrap: wrap;
     `;
 
-    let rowDiv; // Variable to hold the current row div
+    let rowDiv; 
 
-    // Calculate the start and end indices for the current page
     const startIndex = (page - 1) * 10;
     const endIndex = Math.min(startIndex + 10, approachingPosts.length);
 
     approachingPosts.slice(startIndex, endIndex).forEach((postData, index) => {
-        // Create a new row div for every second post
         if (index % 2 === 0) {
             rowDiv = document.createElement('div');
             rowDiv.style.cssText = `
@@ -280,7 +106,7 @@ function renderPosts(data, page) {
 
         const meta = document.createElement('p');
         meta.className = "post-meta";
-        meta.style.cssText = "font-style: italic; color: #666;";
+        meta.style.cssText = "font-style: italic; color: #AFAFAF;";
         meta.textContent = postData.date;
 
         const excerptPara = document.createElement('p');
@@ -294,10 +120,8 @@ function renderPosts(data, page) {
 
         post.appendChild(article);
         
-        // Append the post to the current row div
         rowDiv.appendChild(post);
 
-        // If it's the last post in the row or the last post overall, append the row div to the container
         if ((index + 1) % 2 === 0 || index === endIndex - 1) {
             container.appendChild(rowDiv);
         }
@@ -306,26 +130,13 @@ function renderPosts(data, page) {
     return container;
 }
 
-function nextPage() {
-    if (currentPage < totalPackets) {
-        currentPage++;
-        updatePostsContainer();
-    }
-}
-
-function prevPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        updatePostsContainer();
-    }
-}
-
 function updatePostsContainer() {
     const postsContainer = document.querySelector('.posts-container');
-    postsContainer.innerHTML = ''; // Clear the container
+    postsContainer.innerHTML = '';
     postsContainer.appendChild(renderPosts(data, currentPage));
     setLocalStorage(currentPage, "cp");
     setLocalStorage(totalItem, "tt");
+    document.getElementById("pi").setAttribute("placeholder", currentPage);
 }
 
 updatePostsContainer();

@@ -175,13 +175,23 @@ body {
     width: 30px;
     display: flex;
     justify-content: center;
-    align-items: center;/
+    align-items: center;
     text-align: center;
     font-size: 25px;
     background: none;
     border:none;
     color: white;
     border-bottom: 2.5px dashed var(--wp--preset--color--cyan-bluish-gray);
+    height: 100%;
 }
 
-.pi:hover
+.pi::placeholder {
+    color: var(--wp--preset--color--cyan-bluish-gray);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
