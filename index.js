@@ -54,6 +54,24 @@ const data = {
                     "urlTextContent": "B. Lecture Sleep - dp"
                 },
             ]
+        },
+        {
+            "title": "5 March 2024",
+            "date": "05-03-2024",
+            content: [
+                {
+                    "url": "https://codeforces.com/contest/1935/problem/B",
+                    "urlTextContent": "B. Informatics in MAC"
+                },
+                {
+                    "url": "https://codeforces.com/contest/1935/problem/A",
+                    "urlTextContent": "A. Entertainment in MAC"
+                },
+                {
+                    "url": "https://atcoder.jp/contests/arc084/tasks/arc084_b",
+                    "urlTextContent": "D - Small Multiple"
+                },
+            ]
         }
     ]
 }
