@@ -12,24 +12,40 @@ const data = {
         {
             "title": "npm-free LiveReload(ish): Simple scripts for asset watching and auto-reload in the browser",
             "date": "12-05-2024",
-            "urlTextContent": "A suaaaaaaaaaa aaaaaaaaa aaaaaaaaaa aaaaaaset-watching script and 'LiveReload' functionality. All fitting with my values. Let's see what it looks like!",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84"
+            content: [
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click q3e uy12gu 12g yg12793 129ieb1h2 bibme"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click me"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click me"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click me"
+                }
+            ]
         },
         {
             "title": "A manifesto for small, static, web apps",
-            "date": "21-08-2024",
+            "date": "12-05-2024",
             "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
             "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84"
         },
         {
             "title": "ex3",
-            "date": "09-12-2024",
+            "date": "12-05-2024",
             "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
             "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84"
         },
         {
             "title": "Title 4",
-            "date": "07-04-2024",
+            "date": "01-02-2024",
             "urlTextContent": "Content of Title 4",
             "url": "https://example.com/4"
         },
@@ -201,6 +217,7 @@ const data = {
             "urlTextContent": "Content of Title 32",
             "url": "https://example.com/32"
         }
+
     ]
 }
 
@@ -248,7 +265,7 @@ function renderPosts(data, page) {
     const approachingPosts = data.approaching;
     const container = document.createElement('ul');
     container.style.cssText = `
-    list-style-type: none; 
+        list-style-type: none; 
         padding: 0;
         list-style: none;
         margin: 0;
@@ -276,13 +293,16 @@ function renderPosts(data, page) {
         post.style.cssText = "margin: 15px; color: white;";
 
         const article = document.createElement('article');
-        article.style.cssText = "padding: 10px;";
+        article.style.cssText = `
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        `;
 
         const header = document.createElement('h3');
         header.style.cssText = "font-size: 18px; color: #AFAFAF;";
 
-        const anchor = document.createElement('a');
-        anchor.href = postData.url;
+        const anchor = document.createElement('div');
         anchor.textContent = postData.title;
         anchor.style.cssText = `
             color: white;
@@ -295,17 +315,22 @@ function renderPosts(data, page) {
         meta.style.cssText = "font-style: italic; color: #666;";
         meta.textContent = postData.date;
 
-        const excerptPara = document.createElement('p');
-        excerptPara.className = "post-excerpt";
-        excerptPara.style.cssText = "margin-top: 10px;";
-        excerptPara.textContent = postData.urlTextContent;
-
         article.appendChild(header);
         article.appendChild(meta);
-        article.appendChild(excerptPara);
+
+        for (let i in postData.content) {
+            const excerptPara = document.createElement('a');
+            excerptPara.className = "post-excerpt";
+            excerptPara.style.cssText = `
+                display: block;
+                color: white;
+            `;
+            excerptPara.textContent = postData.content[i].urlTextContent;
+            excerptPara.href = postData.content[i].url;
+            article.appendChild(excerptPara);
+        }
 
         post.appendChild(article);
-        
         rowDiv.appendChild(post);
 
         if ((index + 1) % 2 === 0 || index === endIndex - 1) {
@@ -315,6 +340,7 @@ function renderPosts(data, page) {
 
     return container;
 }
+
 
 function updatePostsContainer() {
     const postsContainer = document.querySelector('.posts-container');
@@ -353,7 +379,6 @@ console.log(dayIndexFromDate("12-12-2024"));
 
 const dateCountsMap = new Map();
 
-// Iterate over the dates in the data and update the counts in the map
 for (let i in data.approaching) {
     const date = data.approaching[i].date;
     const dayIndex = dayIndexFromDate(date);
@@ -366,7 +391,6 @@ for (let i in data.approaching) {
     }
 }
 
-// Output the counts
 dateCountsMap.forEach((count, dayIndex) => {
     console.log(`Date: ${dayIndex}, Count: ${count}`);
 });

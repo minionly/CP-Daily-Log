@@ -3,6 +3,7 @@
     padding: 0px;
     box-sizing: inherit;
     text-decoration: none;
+    font-family: var(--font-mono);
 }
 
 body {
@@ -122,7 +123,15 @@ body {
 }
 
 .posts-container a:hover {
-    border-bottom: 2.5px dashed var(--wp--preset--color--cyan-bluish-gray);
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: var(--wp--preset--color--cyan-bluish-gray);
+    text-decoration-thickness: 2.5px;
+}
+
+.posts-container a {
+    text-underline-offset: 8px;
+    line-height: 30px;
 }
 
 .site-header {
@@ -175,7 +184,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 25px;
+    font-size: 22px;
     background: none;
     border:none;
     color: white;
@@ -195,7 +204,7 @@ input::-webkit-inner-spin-button {
 
 .side-bar {
     width: 350px;
-    border-top: 2.5px dashed var(--wp--preset--color--cyan-bluish-gray);
+    /* border-top: 2.5px dashed var(--wp--preset--color--cyan-bluish-gray); */
     padding: 30px;
 }
 
@@ -221,7 +230,7 @@ grid-template-areas: "empty months"
 grid-template-columns: auto 1fr;
 grid-gap: 10px;
 background-color: #0E1117;
-border: 3px dashed #3a4148;
+border: 3px solid #5b6067;
 border-radius: 5px;
 }
 
