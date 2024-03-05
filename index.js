@@ -224,9 +224,9 @@ for (let i in data.approaching) {
     const dayIndex = dayIndexFromDate(date);
 
     if (dateCountsMap.has(dayIndex)) {
-        dateCountsMap.set(dayIndex, dateCountsMap.get(dayIndex) + 1);
+        dateCountsMap.set(dayIndex, dateCountsMap.get(dayIndex) + data.approaching[i].content.length);
     } else {
-        dateCountsMap.set(dayIndex, 1);
+        dateCountsMap.set(dayIndex, data.approaching[i].content.length);
     }
 }
 
@@ -236,10 +236,38 @@ dateCountsMap.forEach((count, dayIndex) => {
 
 const squares = document.querySelector('.squares');
 for (var i = 1; i < totalDay; i++) {
-  const level = dateCountsMap.get(i) || 0;
-  squares.insertAdjacentHTML('beforeend', `<li data-level="${level}" id="es-${i}"></li>`);
+    let level = dateCountsMap.get(i) || 0;
+    if (level >= 1 && level <= 2) level = 1;
+        else if (level >= 3 && level <= 6) level = 2;
+            else if (level >= 7) level = 3;
+    squares.insertAdjacentHTML('beforeend', `<li data-level="${level}" id="es-${i}"></li>`);
 }
 
 document.getElementById(`es-${dayIndexFromDate(currentDate)}`).style.cssText = `
     border: 1.5px solid #FAFAFA;
 `;
+
+for (let i = 1; i < totalDay; i++) {
+    const element = document.getElementById(`es-${i}`);
+    element.addEventListener('mouseover', () => {
+        setLocalStorage(i, "ccdd");
+        const posts = dateCountsMap.get(i) || 0;
+        const tooltip = document.createElement('div');
+        tooltip.textContent = `${posts} problems solved`;
+        tooltip.style.cssText = `
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            top: ${element.offsetTop - 30}px;
+            left: ${element.offsetLeft + 20}px;
+            z-index: 100;
+        `;
+
+        document.body.appendChild(tooltip);
+        element.addEventListener('mouseout', () => {
+            tooltip.remove();
+        });
+    });
+}
