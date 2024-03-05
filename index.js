@@ -34,14 +34,46 @@ const data = {
         {
             "title": "A manifesto for small, static, web apps",
             "date": "12-05-2024",
-            "urlTextContent": "I’m having a lot of fun building small, static web apps. And there are certain principles I’m trying to stick to as I do it. Let’s see what they are… What is a manifesto anyway? As I started writing this, I asked myself: “Is this actually a manifesto? What is a manifesto?” But the definition […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84"
+            content: [
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click q3e uy12gu 12g yg12793 129ieb1h2 bibme"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click me"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click me"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click me"
+                }
+            ]
         },
         {
             "title": "ex3",
             "date": "12-05-2024",
-            "urlTextContent": "Regular readers will know about my love of simple, static-hosted, web-based apps that are easy to build and maintain, and free to host. But they are held back by the lack of dynamic data. Sure, you can store data in local storage, but what if you want to share data between browsers? Is there a […]",
-            "url": "https://rosswintle.uk/?fbclid=IwAR1DXBCzHtbdcME6XQhpvoiHqvPTH7x0vxP_38gUPJCGdqAJxMAnLEaZx84"
+            content: [
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click q3e uy12gu 12g yg12793 129ieb1h2 bibme"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click me"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click me"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "click me"
+                }
+            ]
         },
         {
             "title": "Title 4",
@@ -324,7 +356,9 @@ function renderPosts(data, page) {
             excerptPara.style.cssText = `
                 display: block;
                 color: white;
+                
             `;
+            excerptPara.target = "_blank";
             excerptPara.textContent = postData.content[i].urlTextContent;
             excerptPara.href = postData.content[i].url;
             article.appendChild(excerptPara);
