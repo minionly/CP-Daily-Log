@@ -11,48 +11,48 @@ const data = {
     approaching: [
         {
             "title": "1 March 2024",
-            "date": "05-03-2024",
+            "date": "01-03-2024",
             content: [
                 {
                     "url": "https://oj.vnoi.info/problem/cowgirl",
-                    "urlTextContent": "Bitmask DP"
+                    "urlTextContent": "Cow Girl - Bitmask dp"
+                },
+                {
+                    "url": "https://codeforces.com/problemset/problem/1182/A",
+                    "urlTextContent": "A. Filling Shapes - dp"
                 }
             ]
         },
         {
-            "title": "Title example",
-            "date": "example date",
+            "title": "2 March 2024",
+            "date": "02-03-2024",
             content: [
                 {
-                    "url": "https://codeforces.com/problemset/problem/1182/A",
-                    "urlTextContent": "click me"
+                    "url": "https://cses.fi/problemset/task/1746",
+                    "urlTextContent": "Array Description - dp"
                 },
                 {
-                    "url": "https://codeforces.com/problemset/problem/1182/A",
-                    "urlTextContent": "click me"
+                    "url": "https://cses.fi/problemset/task/1639",
+                    "urlTextContent": "Edit Distance - dp"
                 },
                 {
-                    "url": "https://codeforces.com/problemset/problem/1182/A",
-                    "urlTextContent": "click me"
+                    "url": "https://oj.vnoi.info/problem/mixup2",
+                    "urlTextContent": "Mixed Up Cows - dp"
                 }
             ]
         },
         {
-            "title": "Title example",
-            "date": "example date",
+            "title": "3 March 2024",
+            "date": "03-03-2024",
             content: [
                 {
-                    "url": "https://codeforces.com/problemset/problem/1182/A",
-                    "urlTextContent": "click me click me click me"
+                    "url": "https://codeforces.com/problemset/problem/830/A",
+                    "urlTextContent": "A. Office Keys - dp"
                 },
                 {
-                    "url": "https://codeforces.com/problemset/problem/1182/A",
-                    "urlTextContent": "click me"
+                    "url": "https://codeforces.com/problemset/problem/961/B",
+                    "urlTextContent": "B. Lecture Sleep - dp"
                 },
-                {
-                    "url": "https://codeforces.com/problemset/problem/1182/A",
-                    "urlTextContent": "click me"
-                }
             ]
         }
     ]
