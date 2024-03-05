@@ -238,6 +238,7 @@ input.addEventListener('keydown', function (event) {
             setLocalStorage(parseInt(input.value), "cp");
             currentPage = parseInt(input.value);
             updatePostsContainer();
+            input.value = '';
             event.preventDefault();
         }
     }
