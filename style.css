@@ -368,3 +368,17 @@ ul {
 .a-tag:hover {
     cursor: pointer;
 }
+
+.tag-container {
+    display: inline-block;
+    position: relative;
+}
+
+.tag-selection-box {
+    display: inline-block;
+}
+
+
+.post-tag:hover {
+    cursor: pointer;
+}

@@ -1,3 +1,25 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCz9kTAOitzPe1-gVbWnGAXLsMvNWpWYMc",
+  authDomain: "tnkn-cp-log.firebaseapp.com",
+  projectId: "tnkn-cp-log",
+  storageBucket: "tnkn-cp-log.appspot.com",
+  messagingSenderId: "517454176932",
+  appId: "1:517454176932:web:213a5a7f489e0242d3fc31",
+  measurementId: "G-QHHWGMWJM1"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 function setLocalStorage(data, address){
     localStorage.setItem(address, JSON.stringify(data));
 }
@@ -39,7 +61,7 @@ var input = document.getElementById('pi');
 input.addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {  
         if (input.value >= 1 && input.value <= totalItem) {
-            setLocalStorage(parseInt(input.value), "cp");
+            setLocalStorage (parseInt(input.value), "cp");
             currentPage = parseInt(input.value);
             updatePostsContainer();
             input.value = '';
@@ -122,7 +144,12 @@ function renderPosts(data, page) {
         }
 
         post.appendChild(article);
-
+        let tagContainer = document.createElement('div');
+        tagContainer.setAttribute('id', `tc-${index}`);
+        tagContainer.style.cssText = `
+            display: flex;
+            flex-wrap: wrap;
+        `;
         let addTag = document.createElement('div');
         addTag.setAttribute("class", 'a-tag');
         addTag.style.cssText = `
@@ -134,7 +161,8 @@ function renderPosts(data, page) {
             padding-inline: 5px;
         `;
         addTag.innerHTML = '+ add tag';
-        post.appendChild(addTag);
+        tagContainer.appendChild(addTag);
+        post.appendChild(tagContainer);
         rowDiv.appendChild(post);
 
         if ((index + 1) % 2 === 0 || index === endIndex - 1) {
@@ -256,7 +284,6 @@ for (let i of tags.collection) {
     tagsBox.appendChild(tags);
 }
 
-
 // Function to create tag container below each post
 function createTagContainer() {
     const tagContainer = document.createElement('div');
@@ -264,15 +291,24 @@ function createTagContainer() {
     return tagContainer;
 }
 
-// Function to create the tag selection box
-// Function to create the tag selection box
 function createTagSelectionBox(post, tagContainer) {
     const tagSelectionBox = document.createElement('div');
     tagSelectionBox.className = 'tag-selection-box';
-    
-    // Apply CSS to make options vertical
-    tagSelectionBox.style.flexDirection = 'column';
-    
+    tagSelectionBox.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        width: 200px;
+        max-height: 200px;
+        overflow-y: auto;
+        top: calc(100% + 5px);
+        left: 0; 
+        z-index: 999; 
+    `;
+
     // Iterate through each tag and create a button for selection
     for (let tag of tags.collection) {
         const tagButton = document.createElement('button');
@@ -313,11 +349,28 @@ function createTagSelectionBox(post, tagContainer) {
 }
 
 
+
+
 // Add event listeners to all "add tag" buttons
 document.querySelectorAll('.a-tag').forEach(button => {
     button.addEventListener('click', (event) => {
         const post = event.target.closest('li');
-        const existingTagSelectionBox = post.querySelector('.tag-selection-box');
+        const postIndex = Array.from(post.parentNode.children).indexOf(post); // Get the index of the post in its parent
+        let tagContainer = document.getElementById(`tc-${postIndex}`); // Get the corresponding tag container
+
+        // Create tag container if it doesn't exist
+        if (!tagContainer) {
+            tagContainer = document.createElement('div');
+            tagContainer.id = `tc-${postIndex}`; // Assign a unique ID to the tag container based on the post index
+            tagContainer.style.cssText = `
+                display: flex;
+                flex-wrap: wrap;
+            `;
+            post.appendChild(tagContainer); // Append tag container to post
+        }
+
+        // Check if a tag selection box already exists
+        const existingTagSelectionBox = tagContainer.querySelector('.tag-selection-box');
         
         // If tag selection box is already open, close it and return
         if (existingTagSelectionBox) {
@@ -325,15 +378,22 @@ document.querySelectorAll('.a-tag').forEach(button => {
             return;
         }
         
-        // Create tag container below the post
-        const tagContainer = createTagContainer();
-        post.appendChild(tagContainer);
-        
         // Create and append tag selection box within the tag container
         const tagSelectionBox = createTagSelectionBox(post, tagContainer);
         tagContainer.appendChild(tagSelectionBox);
+
+        // Position the tag selection box below the "add tag" button
+        const buttonRect = button.getBoundingClientRect();
+        tagSelectionBox.style.position = 'absolute';
+        tagSelectionBox.style.left = `${buttonRect.left}px`;
+        tagSelectionBox.style.top = `${buttonRect.bottom}px`;
+
+        // Update tag container CSS to display inline
+        tagContainer.style.display = 'inline-block';
+        tagContainer.style.position = 'relative'; // Ensure proper positioning of tag selection box
     });
 });
+
 
 // Event listener to remove tag when clicked
 document.addEventListener('click', function(event) {
