@@ -7,74 +7,7 @@ function getLocalStorage(address){
     return data;
 }
 
-const data = {
-    approaching: [
-        {
-            "title": "1 March 2024",
-            "date": "01-03-2024",
-            content: [
-                {
-                    "url": "https://oj.vnoi.info/problem/cowgirl",
-                    "urlTextContent": "Cow Girl - Bitmask dp"
-                },
-                {
-                    "url": "https://codeforces.com/problemset/problem/1182/A",
-                    "urlTextContent": "A. Filling Shapes - dp"
-                }
-            ]
-        },
-        {
-            "title": "2 March 2024",
-            "date": "02-03-2024",
-            content: [
-                {
-                    "url": "https://cses.fi/problemset/task/1746",
-                    "urlTextContent": "Array Description - dp"
-                },
-                {
-                    "url": "https://cses.fi/problemset/task/1639",
-                    "urlTextContent": "Edit Distance - dp"
-                },
-                {
-                    "url": "https://oj.vnoi.info/problem/mixup2",
-                    "urlTextContent": "Mixed Up Cows - dp"
-                }
-            ]
-        },
-        {
-            "title": "3 March 2024",
-            "date": "03-03-2024",
-            content: [
-                {
-                    "url": "https://codeforces.com/problemset/problem/830/A",
-                    "urlTextContent": "A. Office Keys - dp"
-                },
-                {
-                    "url": "https://codeforces.com/problemset/problem/961/B",
-                    "urlTextContent": "B. Lecture Sleep - dp"
-                },
-            ]
-        },
-        {
-            "title": "5 March 2024",
-            "date": "05-03-2024",
-            content: [
-                {
-                    "url": "https://codeforces.com/contest/1935/problem/B",
-                    "urlTextContent": "B. Informatics in MAC"
-                },
-                {
-                    "url": "https://codeforces.com/contest/1935/problem/A",
-                    "urlTextContent": "A. Entertainment in MAC"
-                },
-                {
-                    "url": "https://atcoder.jp/contests/arc084/tasks/arc084_b",
-                    "urlTextContent": "D - Small Multiple"
-                },
-            ]
-        }
-    ]
-}
+import { data } from './data.js';  
 
 let currentPage = 1;
 const totalItem = Math.floor(data.approaching.length / 10 +1);
@@ -185,9 +118,23 @@ function renderPosts(data, page) {
             excerptPara.textContent = postData.content[i].urlTextContent;
             excerptPara.href = postData.content[i].url;
             article.appendChild(excerptPara);
+
         }
 
         post.appendChild(article);
+
+        let addTag = document.createElement('div');
+        addTag.setAttribute("class", 'a-tag');
+        addTag.style.cssText = `
+            margin: 5px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 2px dashed #abb8c3;
+            display: inline-block;
+            padding-inline: 5px;
+        `;
+        addTag.innerHTML = '+ add tag';
+        post.appendChild(addTag);
         rowDiv.appendChild(post);
 
         if ((index + 1) % 2 === 0 || index === endIndex - 1) {
@@ -214,7 +161,7 @@ const year = parseInt(now.substring(1,5));
 const month = parseInt(now.substring(6,8));
 const day = parseInt(now.substring(9,11));
 const currentDate = day+'-'+month+'-'+year;
-console.log(currentDate);
+console.log();
 
 function isLeapYear(year) {
     return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
@@ -289,3 +236,93 @@ for (let i = 1; i < totalDay; i++) {
         });
     });
 }
+
+// tags render
+
+import { tags } from './data.js';
+
+let tagsBox = document.querySelector('.tags-box');
+
+for (let i of tags.collection) {
+    let tags = document.createElement('div');
+    tags.innerHTML = i.name;
+    tags.style.cssText = `
+        background-color: ${i.color};
+        margin: 5px;
+        font-size: 14px;
+        border-radius: 5px;
+        padding-inline: 5px;
+    `;
+    tagsBox.appendChild(tags);
+}
+
+// Add event listeners to all "add tag" buttons
+document.querySelectorAll('.a-tag').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const post = event.target.closest('li');
+        const tagContainer = createTagContainer();
+        post.appendChild(tagContainer);
+        const tagSelectionBox = createTagSelectionBox(post, tagContainer);
+        tagContainer.appendChild(tagSelectionBox);
+    });
+});
+
+// Function to create tag container below each post
+function createTagContainer() {
+    const tagContainer = document.createElement('div');
+    tagContainer.className = 'tag-container';
+    tagContainer.style.cssText = `
+        display: flex;
+    `;
+
+    return tagContainer;
+}
+
+// Function to create the tag selection box
+function createTagSelectionBox(post, tagContainer) {
+    const tagSelectionBox = document.createElement('div');
+    tagSelectionBox.className = 'tag-selection-box';
+    
+    // Iterate through each tag and create a button for selection
+    for (let tag of tags.collection) {
+        const tagButton = document.createElement('button');
+        tagButton.textContent = tag.name;
+        tagButton.style.backgroundColor = tag.color;
+        
+        // Add event listener for tag selection
+        tagButton.addEventListener('click', () => {
+            // Create tag element
+            const postTag = document.createElement('div');
+            postTag.textContent = tag.name;
+            postTag.style.cssText = `
+                background-color: ${tag.color};
+                margin: 5px;
+                font-size: 14px;
+                border-radius: 5px;
+                padding-inline: 5px;
+                display: inline-block;
+            `;
+            postTag.className = 'post-tag';
+            
+            // Add tag to the tag container
+            tagContainer.appendChild(postTag);
+            
+            // Remove tag selection box
+            tagSelectionBox.remove();
+            
+            // Here you can handle saving the selected tag to your data structure
+        });
+        
+        tagSelectionBox.appendChild(tagButton);
+    }
+    
+    return tagSelectionBox;
+}
+
+// Event listener to remove tag when clicked
+document.querySelectorAll('.post-tag').forEach(tag => {
+    tag.addEventListener('click', () => {
+        tag.remove();
+        // Here you can handle removing the tag from your data structure
+    });
+});
