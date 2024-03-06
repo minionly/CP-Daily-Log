@@ -256,44 +256,38 @@ for (let i of tags.collection) {
     tagsBox.appendChild(tags);
 }
 
-// Add event listeners to all "add tag" buttons
-document.querySelectorAll('.a-tag').forEach(button => {
-    button.addEventListener('click', (event) => {
-        const post = event.target.closest('li');
-        const tagContainer = createTagContainer();
-        post.appendChild(tagContainer);
-        const tagSelectionBox = createTagSelectionBox(post, tagContainer);
-        tagContainer.appendChild(tagSelectionBox);
-    });
-});
 
 // Function to create tag container below each post
 function createTagContainer() {
     const tagContainer = document.createElement('div');
     tagContainer.className = 'tag-container';
-    tagContainer.style.cssText = `
-        display: flex;
-    `;
-
     return tagContainer;
 }
 
 // Function to create the tag selection box
+// Function to create the tag selection box
 function createTagSelectionBox(post, tagContainer) {
     const tagSelectionBox = document.createElement('div');
     tagSelectionBox.className = 'tag-selection-box';
+    
+    // Apply CSS to make options vertical
+    tagSelectionBox.style.flexDirection = 'column';
     
     // Iterate through each tag and create a button for selection
     for (let tag of tags.collection) {
         const tagButton = document.createElement('button');
         tagButton.textContent = tag.name;
         tagButton.style.backgroundColor = tag.color;
+        tagButton.style.marginBottom = '5px'; // Add margin between options
+        tagButton.className = 'post-tag'; // Add class for consistent styling
         
         // Add event listener for tag selection
         tagButton.addEventListener('click', () => {
             // Create tag element
             const postTag = document.createElement('div');
             postTag.textContent = tag.name;
+            postTag.style.backgroundColor = tag.color;
+            postTag.className = 'post-tag';
             postTag.style.cssText = `
                 background-color: ${tag.color};
                 margin: 5px;
@@ -302,7 +296,6 @@ function createTagSelectionBox(post, tagContainer) {
                 padding-inline: 5px;
                 display: inline-block;
             `;
-            postTag.className = 'post-tag';
             
             // Add tag to the tag container
             tagContainer.appendChild(postTag);
@@ -319,10 +312,34 @@ function createTagSelectionBox(post, tagContainer) {
     return tagSelectionBox;
 }
 
-// Event listener to remove tag when clicked
-document.querySelectorAll('.post-tag').forEach(tag => {
-    tag.addEventListener('click', () => {
-        tag.remove();
-        // Here you can handle removing the tag from your data structure
+
+// Add event listeners to all "add tag" buttons
+document.querySelectorAll('.a-tag').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const post = event.target.closest('li');
+        const existingTagSelectionBox = post.querySelector('.tag-selection-box');
+        
+        // If tag selection box is already open, close it and return
+        if (existingTagSelectionBox) {
+            existingTagSelectionBox.remove();
+            return;
+        }
+        
+        // Create tag container below the post
+        const tagContainer = createTagContainer();
+        post.appendChild(tagContainer);
+        
+        // Create and append tag selection box within the tag container
+        const tagSelectionBox = createTagSelectionBox(post, tagContainer);
+        tagContainer.appendChild(tagSelectionBox);
     });
 });
+
+// Event listener to remove tag when clicked
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('post-tag')) {
+        event.target.remove();
+        // Here you can handle removing the tag from your data structure
+    }
+});
+
